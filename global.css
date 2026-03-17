@@ -1,17 +1,17 @@
 /* ============================================================
    global.css
-   Webflow Global Stylesheet
+   平井総研 Webflow Global Stylesheet
    Prefix: .hs-
    CDN: jsDelivr via GitHub
    ============================================================ */
 
 
 /* ============================================================
-   1. CSS Custom Properties (:root Variables)
+   1. CSS Custom Properties (Variables)
    ============================================================ */
 
 :root {
-  /* --- Color --- */
+  /* ── Colors ── */
   --hs-navy:        #0A1F44;
   --hs-navy-light:  #162D5A;
   --hs-gold:        #C9A84C;
@@ -23,32 +23,38 @@
   --hs-gray-800:    #333333;
   --hs-black:       #111111;
 
-  /* --- Typography --- */
-  --hs-font-ja:   'Noto Sans JP', sans-serif;
-  --hs-font-en:   'Inter', sans-serif;
-  --hs-text-xs:   12px;
-  --hs-text-sm:   14px;
-  --hs-text-base: 16px;
-  --hs-text-md:   18px;
-  --hs-text-lg:   24px;
-  --hs-text-xl:   32px;
-  --hs-text-2xl:  48px;
-  --hs-text-3xl:  64px;
+  /* ── Typography ── */
+  --hs-font-ja:     'Noto Sans JP', sans-serif;
+  --hs-font-en:     'Inter', sans-serif;
+  --hs-text-xs:     12px;
+  --hs-text-sm:     14px;
+  --hs-text-base:   16px;
+  --hs-text-md:     18px;
+  --hs-text-lg:     24px;
+  --hs-text-xl:     32px;
+  --hs-text-2xl:    48px;
+  --hs-text-3xl:    64px;
 
-  /* --- Spacing --- */
-  --hs-space-xs:  8px;
-  --hs-space-sm:  16px;
-  --hs-space-md:  32px;
-  --hs-space-lg:  64px;
-  --hs-space-xl:  120px;
+  /* ── Spacing ── */
+  --hs-space-xs:    8px;
+  --hs-space-sm:    16px;
+  --hs-space-md:    32px;
+  --hs-space-lg:    64px;
+  --hs-space-xl:    120px;
 
-  /* --- Transitions --- */
-  --hs-transition: 0.25s ease;
+  /* ── Shadows ── */
+  --hs-shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.08);
+  --hs-shadow-md:   0 4px 12px rgba(0, 0, 0, 0.1);
+  --hs-shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ── Transitions ── */
+  --hs-ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --hs-duration:    0.35s;
 }
 
 
 /* ============================================================
-   2. Global Reset (Webflow-safe minimal reset)
+   2. Minimal Reset (Webflow と競合しない範囲)
    ============================================================ */
 
 *,
@@ -57,144 +63,81 @@
   box-sizing: border-box;
 }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
+img {
   max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
+  height: auto;
+  display: block;
 }
 
 
 /* ============================================================
-   3. Page Wrapper（bodyは触らずラッパーで制御）
+   3. Base Typography (.hs-page スコープ)
+   Webflow の body スタイルと競合しないようクラスで制御
    ============================================================ */
 
-/* Webflowの<body>タグに .hs-page クラスを追加して使用 */
 .hs-page {
   font-family: var(--hs-font-ja);
-  font-size: var(--hs-text-base);
-  line-height: 1.8;
   color: var(--hs-gray-800);
   background-color: var(--hs-white);
   font-feature-settings: "palt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
 }
 
-
-/* ============================================================
-   4. Base Typography (h1–h4, p, Japanese optimisation)
-   ============================================================ */
-
 .hs-page h1 {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-3xl);
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.04em;
-  color: var(--hs-navy);
-  margin-top: 0;
-  margin-bottom: var(--hs-space-sm);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--hs-space-md);
 }
 
 .hs-page h2 {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-2xl);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: 0.03em;
-  color: var(--hs-navy);
-  margin-top: 0;
-  margin-bottom: var(--hs-space-sm);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--hs-space-sm);
 }
 
 .hs-page h3 {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-xl);
   font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  color: var(--hs-navy);
-  margin-top: 0;
-  margin-bottom: var(--hs-space-xs);
+  line-height: 1.3;
+  margin: 0 0 var(--hs-space-sm);
 }
 
 .hs-page h4 {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-lg);
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: var(--hs-navy);
-  margin-top: 0;
-  margin-bottom: var(--hs-space-xs);
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 var(--hs-space-xs);
 }
 
 .hs-page p {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-base);
-  line-height: 1.9;
-  letter-spacing: 0.03em;
-  color: var(--hs-gray-800);
-  margin-top: 0;
-  margin-bottom: var(--hs-space-sm);
-  word-break: break-all;
-  overflow-wrap: break-word;
-  line-break: strict;
-}
-
-/* --- Responsive Typography --- */
-
-@media screen and (max-width: 991px) {
-  .hs-page h1 { font-size: var(--hs-text-2xl); }
-  .hs-page h2 { font-size: var(--hs-text-xl); }
-  .hs-page h3 { font-size: var(--hs-text-lg); }
-  .hs-page h4 { font-size: var(--hs-text-md); }
-}
-
-@media screen and (max-width: 767px) {
-  .hs-page h1 { font-size: var(--hs-text-xl); }
-  .hs-page h2 { font-size: var(--hs-text-lg); }
-  .hs-page h3 { font-size: var(--hs-text-md); }
-  .hs-page h4 { font-size: var(--hs-text-base); }
-  .hs-page p  { font-size: var(--hs-text-sm); }
+  line-height: 1.8;
+  margin: 0 0 var(--hs-space-sm);
 }
 
 
 /* ============================================================
-   5. Utility Classes
+   4. Layout Utilities
    ============================================================ */
 
-/* --- Layout --- */
-
+/* ── Container ── */
 .hs-container {
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: var(--hs-space-sm);
-  padding-left: var(--hs-space-sm);
   width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--hs-space-sm);
+  padding-right: var(--hs-space-sm);
 }
 
+/* ── Section Spacing ── */
 .hs-section {
   padding-top: var(--hs-space-xl);
   padding-bottom: var(--hs-space-xl);
@@ -205,49 +148,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: var(--hs-space-lg);
 }
 
-@media screen and (max-width: 991px) {
-  .hs-section    { padding-top: var(--hs-space-lg);  padding-bottom: var(--hs-space-lg); }
-  .hs-section-sm { padding-top: var(--hs-space-md);  padding-bottom: var(--hs-space-md); }
-}
-
-@media screen and (max-width: 767px) {
-  .hs-container  { padding-right: var(--hs-space-sm); padding-left: var(--hs-space-sm); }
-  .hs-section    { padding-top: var(--hs-space-md);  padding-bottom: var(--hs-space-md); }
-  .hs-section-sm { padding-top: var(--hs-space-sm);  padding-bottom: var(--hs-space-sm); }
-}
-
-/* --- Text Color --- */
-
-.hs-text-navy   { color: var(--hs-navy); }
-.hs-text-gold   { color: var(--hs-gold); }
-.hs-text-white  { color: var(--hs-white); }
-.hs-text-center { text-align: center; }
-
-.hs-text-sm-body {
-  font-size: var(--hs-text-sm);
-  color: var(--hs-gray-500);
-  letter-spacing: 0.03em;
-  line-height: 1.8;
-}
-
-/* --- Background Color --- */
-
-.hs-bg-navy  { background-color: var(--hs-navy); }
-.hs-bg-gray  { background-color: var(--hs-gray-100); }
-.hs-bg-white { background-color: var(--hs-white); }
-
-/* --- Divider --- */
-
-.hs-divider {
-  width: 100%;
-  height: 1px;
-  background-color: var(--hs-gray-300);
-  margin: var(--hs-space-lg) 0;
-  border: none;
-}
-
-/* --- Grid --- */
-
+/* ── Grid ── */
 .hs-grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -266,114 +167,102 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--hs-space-md);
 }
 
-@media screen and (max-width: 991px) {
-  .hs-grid-3,
-  .hs-grid-4 { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media screen and (max-width: 767px) {
-  .hs-grid-2,
-  .hs-grid-3,
-  .hs-grid-4 { grid-template-columns: 1fr; }
+/* ── Divider ── */
+.hs-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--hs-gray-300);
+  margin: var(--hs-space-lg) 0;
+  border: none;
 }
 
 
 /* ============================================================
-   6. Button Styles
+   5. Color Utilities
    ============================================================ */
 
+/* ── Text ── */
+.hs-text-navy   { color: var(--hs-navy); }
+.hs-text-gold   { color: var(--hs-gold); }
+.hs-text-white  { color: var(--hs-white); }
+.hs-text-gray   { color: var(--hs-gray-500); }
+
+/* ── Background ── */
+.hs-bg-navy     { background-color: var(--hs-navy); }
+.hs-bg-gray     { background-color: var(--hs-gray-100); }
+.hs-bg-white    { background-color: var(--hs-white); }
+
+/* ── Text Alignment ── */
+.hs-text-center { text-align: center; }
+
+/* ── Small Body Text ── */
+.hs-text-sm-body {
+  font-size: var(--hs-text-sm);
+  color: var(--hs-gray-500);
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   6. Buttons
+   ============================================================ */
+
+/* ── Shared ── */
 .hs-btn-primary,
 .hs-btn-secondary,
 .hs-btn-ghost {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 14px 36px;
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-sm);
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-align: center;
-  text-decoration: none;
-  border-width: 2px;
-  border-style: solid;
+  letter-spacing: 0.08em;
   border-radius: 2px;
   cursor: pointer;
+  text-decoration: none;
   transition:
-    background-color var(--hs-transition),
-    color var(--hs-transition),
-    border-color var(--hs-transition),
-    box-shadow var(--hs-transition);
+    background-color var(--hs-duration) var(--hs-ease),
+    color var(--hs-duration) var(--hs-ease),
+    border-color var(--hs-duration) var(--hs-ease),
+    box-shadow var(--hs-duration) var(--hs-ease);
 }
 
-/* Primary: Navy background + Gold border */
-
+/* ── Primary: ネイビー背景・ゴールドボーダー ── */
 .hs-btn-primary {
   background-color: var(--hs-navy);
-  border-color: var(--hs-gold);
   color: var(--hs-white);
+  border: 1px solid var(--hs-gold);
 }
 
 .hs-btn-primary:hover {
   background-color: var(--hs-navy-light);
-  border-color: var(--hs-gold-light);
-  color: var(--hs-gold-light);
-  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25);
+  box-shadow: var(--hs-shadow-md);
 }
 
-.hs-btn-primary:active {
-  background-color: var(--hs-navy);
-  box-shadow: none;
-}
-
-/* Secondary: Transparent + Navy border */
-
+/* ── Secondary: 透明背景・ネイビーボーダー ── */
 .hs-btn-secondary {
   background-color: transparent;
-  border-color: var(--hs-navy);
   color: var(--hs-navy);
+  border: 1px solid var(--hs-navy);
 }
 
 .hs-btn-secondary:hover {
   background-color: var(--hs-navy);
   color: var(--hs-white);
-  box-shadow: 0 4px 16px rgba(10, 31, 68, 0.2);
 }
 
-.hs-btn-secondary:active {
-  background-color: var(--hs-navy-light);
-  border-color: var(--hs-navy-light);
-  color: var(--hs-white);
-  box-shadow: none;
-}
-
-/* Ghost: Transparent + White border */
-
+/* ── Ghost: 透明背景・白ボーダー ── */
 .hs-btn-ghost {
   background-color: transparent;
-  border-color: var(--hs-white);
   color: var(--hs-white);
+  border: 1px solid var(--hs-white);
 }
 
 .hs-btn-ghost:hover {
   background-color: var(--hs-white);
   color: var(--hs-navy);
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
-}
-
-.hs-btn-ghost:active {
-  background-color: var(--hs-gray-100);
-  border-color: var(--hs-gray-100);
-  color: var(--hs-navy);
-  box-shadow: none;
-}
-
-@media screen and (max-width: 767px) {
-  .hs-btn-primary,
-  .hs-btn-secondary,
-  .hs-btn-ghost {
-    padding: 12px 24px;
-    font-size: var(--hs-text-xs);
-    width: 100%;
-  }
 }
 
 
@@ -385,33 +274,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--hs-white);
   border-radius: 4px;
   padding: var(--hs-space-md);
-  box-shadow:
-    0 2px 8px rgba(10, 31, 68, 0.06),
-    0 1px 2px rgba(10, 31, 68, 0.04);
+  box-shadow: var(--hs-shadow-sm);
   transition:
-    transform var(--hs-transition),
-    box-shadow var(--hs-transition);
-  will-change: transform, box-shadow;
+    box-shadow var(--hs-duration) var(--hs-ease),
+    transform var(--hs-duration) var(--hs-ease);
 }
 
 .hs-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 12px 32px rgba(10, 31, 68, 0.12),
-    0 4px 8px rgba(10, 31, 68, 0.06);
-}
-
-.hs-card:active {
-  transform: translateY(-2px);
-  box-shadow:
-    0 4px 16px rgba(10, 31, 68, 0.08),
-    0 2px 4px rgba(10, 31, 68, 0.04);
-}
-
-@media screen and (max-width: 767px) {
-  .hs-card {
-    padding: var(--hs-space-sm);
-  }
+  box-shadow: var(--hs-shadow-lg);
+  transform: translateY(-4px);
 }
 
 
@@ -419,49 +290,137 @@ h1, h2, h3, h4, h5, h6 {
    8. Section Title Pattern
    ============================================================ */
 
+/* ── 日本語大見出し ── */
 .hs-section-title {
-  font-family: var(--hs-font-ja);
   font-size: var(--hs-text-2xl);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
   color: var(--hs-navy);
-  margin-top: 0;
+  line-height: 1.25;
   margin-bottom: var(--hs-space-xs);
 }
 
+/* ── 英字サブタイトル ── */
 .hs-section-title-en {
   font-family: var(--hs-font-en);
   font-size: var(--hs-text-sm);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--hs-gold);
-  margin-top: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin-bottom: var(--hs-space-xs);
-  display: block;
 }
 
+/* ── ゴールドライン ── */
 .hs-section-title-line {
   display: block;
   width: 48px;
   height: 3px;
   background-color: var(--hs-gold);
-  margin-top: var(--hs-space-xs);
+  margin-top: var(--hs-space-sm);
   margin-bottom: var(--hs-space-md);
-  border-radius: 2px;
 }
 
 .hs-section-title-line--center {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 
+
+/* ============================================================
+   9. Scroll Fade-Up Animation (CSS初期状態)
+   animations.js と連動
+   ============================================================ */
+
+.hs-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+  will-change: opacity, transform;
+}
+
+.hs-fade-up[data-animated="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   10. Header Scroll State
+   animations.js と連動
+   ============================================================ */
+
+.hs-header-scrolled {
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--hs-shadow-sm);
+}
+
+
+/* ============================================================
+   11. Responsive Breakpoints
+   PC  : default
+   TB  : max-width 991px
+   SP  : max-width 767px
+   ============================================================ */
+
+/* ── Tablet ── */
 @media screen and (max-width: 991px) {
-  .hs-section-title { font-size: var(--hs-text-xl); }
+
+  :root {
+    --hs-space-xl: 80px;
+  }
+
+  .hs-page h1 {
+    font-size: var(--hs-text-2xl);
+  }
+
+  .hs-page h2 {
+    font-size: var(--hs-text-xl);
+  }
+
+  .hs-section-title {
+    font-size: var(--hs-text-xl);
+  }
+
+  .hs-grid-3,
+  .hs-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* ── Smartphone ── */
 @media screen and (max-width: 767px) {
-  .hs-section-title    { font-size: var(--hs-text-lg); }
-  .hs-section-title-en { font-size: var(--hs-text-xs); letter-spacing: 0.15em; }
+
+  :root {
+    --hs-space-xl: 60px;
+    --hs-space-lg: 40px;
+  }
+
+  .hs-page h1 {
+    font-size: var(--hs-text-xl);
+  }
+
+  .hs-page h2 {
+    font-size: var(--hs-text-lg);
+  }
+
+  .hs-page h3 {
+    font-size: var(--hs-text-md);
+  }
+
+  .hs-section-title {
+    font-size: var(--hs-text-lg);
+  }
+
+  .hs-grid-2,
+  .hs-grid-3,
+  .hs-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hs-btn-primary,
+  .hs-btn-secondary,
+  .hs-btn-ghost {
+    width: 100%;
+    padding: 16px 24px;
+  }
 }
