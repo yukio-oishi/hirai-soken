@@ -1,434 +1,5 @@
 /* ============================================================
-   global.css
-   平井総研 Webflow Global Stylesheet
-   Prefix: .hs-
-   CDN: jsDelivr via GitHub
-   ============================================================ */
-
-
-/* ============================================================
-   1. CSS Custom Properties (Variables)
-   ============================================================ */
-
-:root {
-  /* ── Colors ── */
-  --hs-navy:        #0A1F44;
-  --hs-navy-light:  #162D5A;
-  --hs-gold:        #C9A84C;
-  --hs-gold-light:  #E8C96A;
-  --hs-white:       #FFFFFF;
-  --hs-gray-100:    #F7F7F7;
-  --hs-gray-300:    #E0E0E0;
-  --hs-gray-500:    #9E9E9E;
-  --hs-gray-800:    #333333;
-  --hs-black:       #111111;
-
-  /* ── Typography ── */
-  --hs-font-ja:     'Noto Sans JP', sans-serif;
-  --hs-font-en:     'Inter', sans-serif;
-  --hs-text-xs:     12px;
-  --hs-text-sm:     14px;
-  --hs-text-base:   16px;
-  --hs-text-md:     18px;
-  --hs-text-lg:     24px;
-  --hs-text-xl:     32px;
-  --hs-text-2xl:    48px;
-  --hs-text-3xl:    64px;
-
-  /* ── Spacing ── */
-  --hs-space-xs:    8px;
-  --hs-space-sm:    16px;
-  --hs-space-md:    32px;
-  --hs-space-lg:    64px;
-  --hs-space-xl:    120px;
-
-  /* ── Shadows ── */
-  --hs-shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.08);
-  --hs-shadow-md:   0 4px 12px rgba(0, 0, 0, 0.1);
-  --hs-shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.12);
-
-  /* ── Transitions ── */
-  --hs-ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --hs-duration:    0.35s;
-  --hs-transition:  0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-
-/* ============================================================
-   2. Minimal Reset (Webflow と競合しない範囲)
-   ============================================================ */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-/* ============================================================
-   3. Base Typography (.hs-page スコープ)
-   Webflow の body スタイルと競合しないようクラスで制御
-   ============================================================ */
-
-.hs-page {
-  font-family: var(--hs-font-ja);
-  color: var(--hs-gray-800);
-  background-color: var(--hs-white);
-  font-feature-settings: "palt" 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.8;
-  letter-spacing: 0.03em;
-}
-
-.hs-page h1 {
-  font-size: var(--hs-text-3xl);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  margin: 0 0 var(--hs-space-md);
-}
-
-.hs-page h2 {
-  font-size: var(--hs-text-2xl);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  margin: 0 0 var(--hs-space-sm);
-}
-
-.hs-page h3 {
-  font-size: var(--hs-text-xl);
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 var(--hs-space-sm);
-}
-
-.hs-page h4 {
-  font-size: var(--hs-text-lg);
-  font-weight: 500;
-  line-height: 1.4;
-  margin: 0 0 var(--hs-space-xs);
-}
-
-.hs-page p {
-  font-size: var(--hs-text-base);
-  line-height: 1.8;
-  margin: 0 0 var(--hs-space-sm);
-}
-
-
-/* ============================================================
-   4. Layout Utilities
-   ============================================================ */
-
-/* ── Container ── */
-.hs-container {
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--hs-space-sm);
-  padding-right: var(--hs-space-sm);
-}
-
-/* ── Section Spacing ── */
-.hs-section {
-  padding-top: var(--hs-space-xl);
-  padding-bottom: var(--hs-space-xl);
-}
-
-.hs-section-sm {
-  padding-top: var(--hs-space-lg);
-  padding-bottom: var(--hs-space-lg);
-}
-
-/* ── Grid ── */
-.hs-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--hs-space-md);
-}
-
-.hs-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--hs-space-md);
-}
-
-.hs-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--hs-space-md);
-}
-
-/* ── Divider ── */
-.hs-divider {
-  width: 100%;
-  height: 1px;
-  background-color: var(--hs-gray-300);
-  margin: var(--hs-space-lg) 0;
-  border: none;
-}
-
-
-/* ============================================================
-   5. Color Utilities
-   ============================================================ */
-
-/* ── Text ── */
-.hs-text-navy   { color: var(--hs-navy); }
-.hs-text-gold   { color: var(--hs-gold); }
-.hs-text-white  { color: var(--hs-white); }
-.hs-text-gray   { color: var(--hs-gray-500); }
-
-/* ── Background ── */
-.hs-bg-navy     { background-color: var(--hs-navy); }
-.hs-bg-gray     { background-color: var(--hs-gray-100); }
-.hs-bg-white    { background-color: var(--hs-white); }
-
-/* ── Text Alignment ── */
-.hs-text-center { text-align: center; }
-
-/* ── Small Body Text ── */
-.hs-text-sm-body {
-  font-size: var(--hs-text-sm);
-  color: var(--hs-gray-500);
-  letter-spacing: 0.03em;
-  line-height: 1.8;
-}
-
-
-/* ============================================================
-   6. Buttons
-   ============================================================ */
-
-/* ── Shared ── */
-.hs-btn-primary,
-.hs-btn-secondary,
-.hs-btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 36px;
-  font-size: var(--hs-text-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    background-color var(--hs-duration) var(--hs-ease),
-    color var(--hs-duration) var(--hs-ease),
-    border-color var(--hs-duration) var(--hs-ease),
-    box-shadow var(--hs-duration) var(--hs-ease);
-}
-
-/* ── Primary: ネイビー背景・ゴールドボーダー ── */
-.hs-btn-primary {
-  background-color: var(--hs-navy);
-  color: var(--hs-white);
-  border: 1px solid var(--hs-gold);
-}
-
-.hs-btn-primary:hover {
-  background-color: var(--hs-navy-light);
-  box-shadow: var(--hs-shadow-md);
-}
-
-/* ── Secondary: 透明背景・ネイビーボーダー ── */
-.hs-btn-secondary {
-  background-color: transparent;
-  color: var(--hs-navy);
-  border: 1px solid var(--hs-navy);
-}
-
-.hs-btn-secondary:hover {
-  background-color: var(--hs-navy);
-  color: var(--hs-white);
-}
-
-/* ── Ghost: 透明背景・白ボーダー ── */
-.hs-btn-ghost {
-  background-color: transparent;
-  color: var(--hs-white);
-  border: 1px solid var(--hs-white);
-}
-
-.hs-btn-ghost:hover {
-  background-color: var(--hs-white);
-  color: var(--hs-navy);
-}
-
-
-/* ============================================================
-   7. Card Component
-   ============================================================ */
-
-.hs-card {
-  background-color: var(--hs-white);
-  border-radius: 4px;
-  padding: var(--hs-space-md);
-  box-shadow: var(--hs-shadow-sm);
-  transition:
-    box-shadow var(--hs-duration) var(--hs-ease),
-    transform var(--hs-duration) var(--hs-ease);
-}
-
-.hs-card:hover {
-  box-shadow: var(--hs-shadow-lg);
-  transform: translateY(-4px);
-}
-
-
-/* ============================================================
-   8. Section Title Pattern
-   ============================================================ */
-
-/* ── 日本語大見出し ── */
-.hs-section-title {
-  font-size: var(--hs-text-2xl);
-  font-weight: 700;
-  color: var(--hs-navy);
-  line-height: 1.25;
-  margin-bottom: var(--hs-space-xs);
-}
-
-/* ── 英字サブタイトル ── */
-.hs-section-title-en {
-  font-family: var(--hs-font-en);
-  font-size: var(--hs-text-sm);
-  font-weight: 600;
-  color: var(--hs-gold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: var(--hs-space-xs);
-}
-
-/* ── ゴールドライン ── */
-.hs-section-title-line {
-  display: block;
-  width: 48px;
-  height: 3px;
-  background-color: var(--hs-gold);
-  margin-top: var(--hs-space-sm);
-  margin-bottom: var(--hs-space-md);
-}
-
-.hs-section-title-line--center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* ============================================================
-   9. Scroll Fade-Up Animation (CSS初期状態)
-   animations.js と連動
-   ============================================================ */
-
-.hs-fade-up {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-  will-change: opacity, transform;
-}
-
-.hs-fade-up[data-animated="true"] {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ============================================================
-   10. Header Scroll State
-   animations.js と連動
-   ============================================================ */
-
-.hs-header-scrolled {
-  background-color: rgba(255, 255, 255, 0.97);
-  box-shadow: var(--hs-shadow-sm);
-}
-
-
-/* ============================================================
-   11. Responsive Breakpoints
-   PC  : default
-   TB  : max-width 991px
-   SP  : max-width 767px
-   ============================================================ */
-
-/* ── Tablet ── */
-@media screen and (max-width: 991px) {
-
-  :root {
-    --hs-space-xl: 80px;
-  }
-
-  .hs-page h1 {
-    font-size: var(--hs-text-2xl);
-  }
-
-  .hs-page h2 {
-    font-size: var(--hs-text-xl);
-  }
-
-  .hs-section-title {
-    font-size: var(--hs-text-xl);
-  }
-
-  .hs-grid-3,
-  .hs-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ── Smartphone ── */
-@media screen and (max-width: 767px) {
-
-  :root {
-    --hs-space-xl: 60px;
-    --hs-space-lg: 40px;
-  }
-
-  .hs-page h1 {
-    font-size: var(--hs-text-xl);
-  }
-
-  .hs-page h2 {
-    font-size: var(--hs-text-lg);
-  }
-
-  .hs-page h3 {
-    font-size: var(--hs-text-md);
-  }
-
-  .hs-section-title {
-    font-size: var(--hs-text-lg);
-  }
-
-  .hs-grid-2,
-  .hs-grid-3,
-  .hs-grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  .hs-btn-primary,
-  .hs-btn-secondary,
-  .hs-btn-ghost {
-    width: 100%;
-    padding: 16px 24px;
-  }
-}
-
-
-/* ============================================================
-   12. Header
+   9. Header
    ============================================================ */
 
 .hs-header {
@@ -442,6 +13,10 @@ img {
   transition: box-shadow var(--hs-transition);
 }
 
+.hs-header-scrolled {
+  box-shadow: 0 2px 16px rgba(10, 31, 68, 0.10);
+}
+
 .hs-header-inner {
   display: flex;
   align-items: center;
@@ -449,8 +24,6 @@ img {
   height: 80px;
   gap: var(--hs-space-md);
 }
-
-/* ── ロゴ ── */
 
 .hs-header-logo {
   display: flex;
@@ -476,8 +49,6 @@ img {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-
-/* ── PC ナビ ── */
 
 .hs-nav {
   flex: 1;
@@ -517,15 +88,8 @@ img {
   transition: width var(--hs-transition);
 }
 
-.hs-nav-link:hover {
-  color: var(--hs-navy);
-}
-
-.hs-nav-link:hover::after {
-  width: 100%;
-}
-
-/* ── 右側エリア ── */
+.hs-nav-link:hover { color: var(--hs-navy); }
+.hs-nav-link:hover::after { width: 100%; }
 
 .hs-header-right {
   display: flex;
@@ -562,8 +126,6 @@ img {
   white-space: nowrap;
 }
 
-/* ── ハンバーガー（SP） ── */
-
 .hs-hamburger {
   display: none;
   flex-direction: column;
@@ -583,24 +145,18 @@ img {
   height: 2px;
   background-color: var(--hs-navy);
   border-radius: 2px;
-  transition:
-    transform var(--hs-transition),
-    opacity var(--hs-transition);
+  transition: transform var(--hs-transition), opacity var(--hs-transition);
 }
 
 .hs-menu-open .hs-hamburger .hs-hamburger-line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
-
 .hs-menu-open .hs-hamburger .hs-hamburger-line:nth-child(2) {
   opacity: 0;
 }
-
 .hs-menu-open .hs-hamburger .hs-hamburger-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
-
-/* ── SP メニュー ── */
 
 .hs-nav-sp {
   display: none;
@@ -609,9 +165,7 @@ img {
   padding: var(--hs-space-sm);
 }
 
-.hs-menu-open .hs-nav-sp {
-  display: block;
-}
+.hs-menu-open .hs-nav-sp { display: block; }
 
 .hs-nav-sp-list {
   list-style: none;
@@ -652,8 +206,6 @@ img {
   width: 100%;
 }
 
-/* ── Header Responsive ── */
-
 @media screen and (max-width: 991px) {
   .hs-header-tel { display: none; }
   .hs-nav-link   { font-size: 13px; }
@@ -668,15 +220,13 @@ img {
 
 
 /* ============================================================
-   13. Footer
+   10. Footer
    ============================================================ */
 
 .hs-footer {
   background-color: var(--hs-navy);
   color: var(--hs-white);
 }
-
-/* ── メインエリア ── */
 
 .hs-footer-main {
   display: grid;
@@ -685,8 +235,6 @@ img {
   padding-top: var(--hs-space-lg);
   padding-bottom: var(--hs-space-lg);
 }
-
-/* ── ブランドエリア ── */
 
 .hs-footer-logo {
   display: flex;
@@ -727,8 +275,6 @@ img {
   font-size: var(--hs-text-sm);
 }
 
-/* ── サイトマップナビ ── */
-
 .hs-footer-nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -743,7 +289,7 @@ img {
   letter-spacing: 0.08em;
   margin-bottom: var(--hs-space-sm);
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .hs-footer-nav-list {
@@ -763,11 +309,7 @@ img {
   transition: color var(--hs-transition);
 }
 
-.hs-footer-nav-link:hover {
-  color: var(--hs-gold);
-}
-
-/* ── 会社情報 ── */
+.hs-footer-nav-link:hover { color: var(--hs-gold); }
 
 .hs-footer-info-list {
   list-style: none;
@@ -807,14 +349,10 @@ img {
   transition: color var(--hs-transition);
 }
 
-.hs-footer-info-tel:hover {
-  color: var(--hs-gold);
-}
-
-/* ── ボトムバー ── */
+.hs-footer-info-tel:hover { color: var(--hs-gold); }
 
 .hs-footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,0.1);
   padding: var(--hs-space-sm) 0;
 }
 
@@ -847,26 +385,16 @@ img {
   transition: color var(--hs-transition);
 }
 
-.hs-footer-legal-link:hover {
-  color: var(--hs-gold);
-}
-
-/* ── Footer Responsive ── */
+.hs-footer-legal-link:hover { color: var(--hs-gold); }
 
 @media screen and (max-width: 991px) {
   .hs-footer-main {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
   }
-  .hs-footer-brand {
-    grid-column: 1 / -1;
-  }
-  .hs-footer-nav {
-    grid-column: 1 / 2;
-  }
-  .hs-footer-info {
-    grid-column: 2 / 3;
-  }
+  .hs-footer-brand { grid-column: 1 / -1; }
+  .hs-footer-nav   { grid-column: 1 / 2; }
+  .hs-footer-info  { grid-column: 2 / 3; }
 }
 
 @media screen and (max-width: 767px) {
@@ -876,9 +404,9 @@ img {
     padding-top: var(--hs-space-md);
     padding-bottom: var(--hs-space-md);
   }
-  .hs-footer-brand  { grid-column: 1; }
-  .hs-footer-nav    { grid-column: 1; grid-template-columns: 1fr; }
-  .hs-footer-info   { grid-column: 1; }
+  .hs-footer-brand { grid-column: 1; }
+  .hs-footer-nav   { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
+  .hs-footer-info  { grid-column: 1; }
   .hs-footer-bottom-inner {
     flex-direction: column;
     gap: var(--hs-space-xs);
